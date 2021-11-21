@@ -1,0 +1,136 @@
+#include <iostream>
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string>
+#include <fstream>
+#define TAM_BUFFER 100
+
+/* run usando console pauser
+
+using namespace std;
+
+class AnlLex {
+
+   char *nombreF; // nombre del fichero
+   FILE* entrada; //entrada de fichero
+   int n1; //define numero de linea
+   int buffer[TAM_BUFFER]; //aux de caracteres
+   int pBuffer; //posicion
+   
+      public:
+           
+            AnlLex(char *unombreF, int una_traza=0 );
+            ~Lexico (void);
+            char SigToken (char token);
+            int LinActual(void) {return n1;};
+            int ExsTraza(void) {if(traza) return 1; else return 0; };
+            
+   };
+   
+   
+   
+AnlLexico: :AnlLexico(char *unombreF, int una_traza) {
+
+        entrada= fopen(unombreF, "r+");
+           if ((entrada==NULL)) {
+               
+               cout<< "No se puede abrir el archivo" <<end1;
+               system ("pause");
+               exit (-2);
+   } if (una_traza) traza=1; 
+        else traza =0;
+         
+               n1=!; //contador
+               pBuffer = 0; //posicion
+               
+  }
+             AnlLex: :~AnlLex () {
+                  fclose(entrada);
+   }
+   
+        char AnlLex: :SigToken(void) {
+              
+              char car;
+              
+                 while ((car=((pBuffer>0)? buffer[--pBuffer]:getc(entrada)))!=EOF)  {
+                 
+                 
+                       if (car==' ') continue;
+                       if(car=='\n') {++n1; continue;}
+                       break;
+          }
+             
+             
+             if (traza) cout<<"Analizador lexico" <<car<<end1;
+             switch(car) {
+             
+                  case'M':
+                  case'C':
+                  case'B':
+                  case'=':
+                  case'(':
+                  case')':
+                  case';':
+                  case'{':
+                  case'}':
+                  case'}':
+                  case'.':
+                  case'+':
+                  case'_':
+                  case'/':
+                  case'%':
+                  
+                  return(car);
+ }
+ 
+ 
+      if(islower(car)) return(car); 
+        else if (isdigit(car)) return(car);
+            else {
+                
+                   count<<"error lexico: Token no conocido"<<end1;
+                   system("pause");
+                   exit(-4);
+                   
+           }
+             return(car);
+  }
+  
+       void AnlLexico: :devuelveToken(cahr token){ 
+             
+             if(pBuffer>TAM_BUFFER) {
+             
+                   cout<<"error: desbordamiento del buffer" <<end1;
+                   system("pause");
+                   exit(-5):
+                   
+         } else { 
+                
+                  buffer[pBuffer++]=token;
+                  if(existeTraza())
+                  cout<<"Recibe el buffer""<<token<<end1;
+                  system("pause");
+                  
+             }
+             
+      }
+      
+           int main(int argc, char** argv) {
+              
+              
+                int traza;
+                char token;
+                AnlLex obj ("prueba.txt", 1);
+                if(obj.existeTraza()) 
+                   cout<<"INICIO"<<end1;
+                      while((token=obj.SigToken())!="}")
+                         cout<<token<<end1;
+                       system("pause");
+                       return 0;
+                       
+             }
+          
+   
+
+           
